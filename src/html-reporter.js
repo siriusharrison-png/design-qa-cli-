@@ -270,7 +270,75 @@ function getExportButtons() {
 }
 
 function getIssuesList(issues) {
-  return '<main><!-- TODO --></main>';
+  if (issues.length === 0) {
+    return `<main class="container issues-list">
+  <div class="no-issues">
+    <div class="icon">✅</div>
+    <p>太棒了！没有发现问题</p>
+  </div>
+</main>`;
+  }
+
+  // 按文件分组
+  const grouped = {};
+  for (const issue of issues) {
+    if (!grouped[issue.file]) {
+      grouped[issue.file] = [];
+    }
+    grouped[issue.file].push(issue);
+  }
+
+  let html = '<main class="container issues-list">';
+
+  for (const [file, fileIssues] of Object.entries(grouped)) {
+    html += `<div class="file-group">
+  <div class="file-header">📄 ${file}</div>`;
+
+    for (const issue of fileIssues) {
+      html += getIssueItem(issue);
+    }
+
+    html += '</div>';
+  }
+
+  html += '</main>';
+  return html;
+}
+
+function getIssueItem(issue) {
+  const typeLabels = {
+    color: '颜色',
+    spacing: '间距',
+    fontSize: '字号'
+  };
+
+  let html = `<div class="issue-item">
+  <span class="issue-type ${issue.type}">${typeLabels[issue.type] || issue.type}</span>
+  <span class="issue-line">第 ${issue.line} 行</span>`;
+
+  // 颜色问题显示色块对比
+  if (issue.type === 'color') {
+    html += `<div class="color-compare">
+    <div class="color-box">
+      <div class="color-swatch" style="background: ${issue.value}"></div>
+      <span class="color-value">${issue.value}</span>
+    </div>
+    <span class="arrow">→</span>
+    <div class="color-box">
+      <div class="color-swatch" style="background: ${issue.value}"></div>
+      <span class="suggestion">${issue.suggestion}</span>
+    </div>
+  </div>`;
+  } else {
+    html += `<div class="color-compare">
+    <span class="color-value">${issue.value}</span>
+    <span class="arrow">→</span>
+    <span class="suggestion">${issue.suggestion}</span>
+  </div>`;
+  }
+
+  html += '</div>';
+  return html;
 }
 
 function getScripts(issues, summary, projectName, date) {
