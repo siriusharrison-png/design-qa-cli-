@@ -2,7 +2,8 @@
  * 输出检测报告
  */
 
-export function printReport(issues, colors) {
+export function printReport(issues, colors, options = {}) {
+  const { fixMode = false } = options;
   if (issues.length === 0) {
     console.log(colors.green('✅ 太棒了！没有发现问题，代码完全符合设计规范！\n'));
     return;
@@ -27,8 +28,16 @@ export function printReport(issues, colors) {
       const value = colors.red(issue.value);
       const suggestion = colors.green(issue.suggestion);
 
-      console.log(`   ${icon} ${lineInfo}  ${value} → ${suggestion}`);
-      console.log(colors.dim(`      ${issue.message}`));
+      // 修复模式下显示修复状态
+      const fixable = issue.type === 'color' || issue.type === 'fontSize';
+      const fixStatus = fixMode
+        ? (fixable ? colors.green(' ✓ 已修复') : colors.dim(' (不自动修复)'))
+        : '';
+
+      console.log(`   ${icon} ${lineInfo}  ${value} → ${suggestion}${fixStatus}`);
+      if (!fixMode) {
+        console.log(colors.dim(`      ${issue.message}`));
+      }
     }
 
     console.log('');
