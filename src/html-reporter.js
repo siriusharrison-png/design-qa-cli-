@@ -342,5 +342,51 @@ function getIssueItem(issue) {
 }
 
 function getScripts(issues, summary, projectName, date) {
-  return '<script>/* TODO */</script>';
+  const reportData = {
+    project: projectName,
+    date: date.toISOString(),
+    summary,
+    issues: issues.map(i => ({
+      file: i.file,
+      line: i.line,
+      type: i.type,
+      value: i.value,
+      suggestion: i.suggestion
+    }))
+  };
+
+  return `<script>
+const reportData = ${JSON.stringify(reportData, null, 2)};
+
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(reportData, null, 2)], { type: 'application/json' });
+  download(blob, 'design-qa-report.json');
+}
+
+function exportCSV() {
+  const headers = ['文件', '行号', '类型', '错误值', '建议值'];
+  const typeMap = { color: '颜色', spacing: '间距', fontSize: '字号' };
+
+  const rows = reportData.issues.map(i => [
+    i.file,
+    i.line,
+    typeMap[i.type] || i.type,
+    i.value,
+    i.suggestion
+  ]);
+
+  const csv = [headers, ...rows].map(row => row.join(',')).join('\\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+  download(blob, 'design-qa-report.csv');
+}
+
+function download(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+</script>`;
 }
