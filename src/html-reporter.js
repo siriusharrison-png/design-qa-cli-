@@ -263,7 +263,10 @@ function getSummaryCards(summary) {
 }
 
 function getExportButtons() {
-  return '<div><!-- TODO --></div>';
+  return `<div class="container export-bar">
+  <button onclick="exportJSON()">导出 JSON</button>
+  <button onclick="exportCSV()">导出 CSV</button>
+</div>`;
 }
 
 function getIssuesList(issues) {
