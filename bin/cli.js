@@ -7,6 +7,7 @@ import { parseTokens } from '../src/tokens-parser.js';
 import { scanFiles } from '../src/scanner.js';
 import { printReport } from '../src/reporter.js';
 import { generateHTMLReport } from '../src/html-reporter.js';
+import { fixFiles } from '../src/fixer.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -30,6 +31,7 @@ ${colors.yellow('用法:')}
 ${colors.yellow('选项:')}
   --tokens, -t <文件>   指定 tokens 文件路径 (默认: design-tokens.css)
   --output, -o <文件>   输出 HTML 报告 (如: report.html)
+  --fix                 自动修复颜色和字号问题
   --help, -h            显示帮助信息
 
 ${colors.yellow('示例:')}
@@ -45,6 +47,7 @@ function parseArgs(args) {
     target: null,
     tokensFile: 'design-tokens.css',
     output: null,
+    fix: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -57,6 +60,8 @@ function parseArgs(args) {
       result.tokensFile = args[++i];
     } else if (arg === '--output' || arg === '-o') {
       result.output = args[++i];
+    } else if (arg === '--fix') {
+      result.fix = true;
     } else if (arg === '--help' || arg === '-h') {
       result.command = 'help';
     }
@@ -113,9 +118,25 @@ async function main() {
     const issues = await scanFiles(targetPath, tokens);
 
     // 3. 输出报告
-    printReport(issues, colors);
+    printReport(issues, colors, { fixMode: args.fix });
 
-    // 4. 生成 HTML 报告（如果指定了输出）
+    // 4. 自动修复（如果指定了 --fix）
+    if (args.fix) {
+      const fixStats = fixFiles(targetPath, issues);
+
+      if (fixStats.total > 0) {
+        console.log(colors.green(`\n✅ 已修复 ${fixStats.total} 个问题`));
+        if (fixStats.color > 0) console.log(`   🎨 颜色: ${fixStats.color} 个`);
+        if (fixStats.fontSize > 0) console.log(`   🔤 字号: ${fixStats.fontSize} 个`);
+      }
+
+      const spacingCount = issues.filter(i => i.type === 'spacing').length;
+      if (spacingCount > 0) {
+        console.log(colors.yellow(`\n⚠️ 剩余 ${spacingCount} 个间距问题需手动处理`));
+      }
+    }
+
+    // 5. 生成 HTML 报告（如果指定了输出）
     if (args.output) {
       const html = generateHTMLReport(issues, {
         projectName: 'Design QA Report',
