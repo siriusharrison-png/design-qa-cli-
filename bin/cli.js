@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
-import { readFileSync, existsSync } from 'fs';
+import { readFileSync, existsSync, writeFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { parseTokens } from '../src/tokens-parser.js';
 import { scanFiles } from '../src/scanner.js';
 import { printReport } from '../src/reporter.js';
+import { generateHTMLReport } from '../src/html-reporter.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -27,7 +28,8 @@ ${colors.yellow('用法:')}
   design-qa check <目录> [选项]
 
 ${colors.yellow('选项:')}
-  --tokens, -t <文件>   指定 tokens 文件路径 (默认: design-tokens.json)
+  --tokens, -t <文件>   指定 tokens 文件路径 (默认: design-tokens.css)
+  --output, -o <文件>   输出 HTML 报告 (如: report.html)
   --help, -h            显示帮助信息
 
 ${colors.yellow('示例:')}
@@ -42,6 +44,7 @@ function parseArgs(args) {
     command: null,
     target: null,
     tokensFile: 'design-tokens.css',
+    output: null,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -52,6 +55,8 @@ function parseArgs(args) {
       result.target = args[++i];
     } else if (arg === '--tokens' || arg === '-t') {
       result.tokensFile = args[++i];
+    } else if (arg === '--output' || arg === '-o') {
+      result.output = args[++i];
     } else if (arg === '--help' || arg === '-h') {
       result.command = 'help';
     }
@@ -109,6 +114,16 @@ async function main() {
 
     // 3. 输出报告
     printReport(issues, colors);
+
+    // 4. 生成 HTML 报告（如果指定了输出）
+    if (args.output) {
+      const html = generateHTMLReport(issues, {
+        projectName: 'Design QA Report',
+        date: new Date()
+      });
+      writeFileSync(args.output, html, 'utf-8');
+      console.log(colors.green(`\n📄 HTML 报告已生成: ${args.output}`));
+    }
   }
 }
 
