@@ -1,0 +1,588 @@
+/**
+ * 转转设计系统 - 自定义工具类
+ * 命名完全对应 Figma 中的 Tokens 名称
+ *
+ * 使用方式：在 HTML 中引入此文件，直接使用类名
+ * <link rel="stylesheet" href="design-tokens.css">
+ */
+
+/* ============================================================
+   一、CSS 变量定义（Design Tokens 原始值）
+   ============================================================ */
+
+:root {
+  /* ---------- 品牌色 (brand primary) ---------- */
+  --brand-primary-0: #0e58ea;
+  --brand-primary-1: #1161fe;
+  --brand-primary-2: #4080ff;
+  --brand-primary-3: #bed4ff;
+  --brand-primary-4: #e6edfa;
+  --brand-primary-5: #f4f7ff;
+
+  /* ---------- 灰色系 (gray) ---------- */
+  --gray-0: #5c6168;
+  --gray-1: #86909c;
+  --gray-2: #c9cdd4;
+  --gray-3: #f2f3f5;
+  --gray-4: #f7f8fa;
+
+  /* ---------- 边框色 (gray/border) ---------- */
+  --border-1: #86909c;
+  --border-2: #c9cdd4;
+  --border-3: #ebecef;
+  --border-4: #f2f3f5;
+
+  /* ---------- 填充色 (gray/fill) ---------- */
+  --fill-1: #5c6168;
+  --fill-2: #c9cdd4;
+  --fill-3: #f2f3f5;
+  --fill-4: #f7f8fa;
+  --fill-5: #ffffff;
+
+  /* ---------- 文字色 (gray/text) ---------- */
+  --text-1: #181818;
+  --text-2: #616161;
+  --text-3: #9e9e9e;
+  --text-4: #ffffff;
+
+  /* ---------- 中性色 (neutral) ---------- */
+  --neutral-0: #181818;
+  --neutral-1: #616161;
+  --neutral-2: #9e9e9e;
+  --neutral-3: #d3d4d5;
+  --neutral-4: #ebecef;
+  --neutral-5: #ffffff;
+
+  /* ---------- 成功色 (semantic/success) ---------- */
+  --success-0: #009a29;
+  --success-1: #00b42a;
+  --success-2: #23c343;
+  --success-3: #aff0b5;
+  --success-4: #e8ffea;
+
+  /* ---------- 警告色 (semantic/warning) ---------- */
+  --warning-0: #d25f00;
+  --warning-1: #ff7d00;
+  --warning-2: #ff9a2e;
+  --warning-3: #ffe4ba;
+  --warning-4: #fff7e8;
+
+  /* ---------- 危险色 (semantic/red) ---------- */
+  --red-0: #cb2634;
+  --red-1: #f53f3f;
+  --red-2: #f76560;
+  --red-3: #fdcdc5;
+  --red-4: #ffece8;
+
+  /* ---------- 间距 (space) ---------- */
+  --space-0: 0px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-48: 48px;
+  --space-80: 80px;
+  --space-120: 120px;
+
+  /* ---------- 圆角 (Radius) ---------- */
+  --radius-0-none: 0px;
+  --radius-2-minismall: 2px;
+  --radius-4-small: 4px;
+  --radius-6-regular: 6px;
+  --radius-8-medium: 8px;
+  --radius-12-large: 12px;
+  --radius-999-round: 999px;
+
+  /* ---------- 组件高度 (height) ---------- */
+  --height-20-supersmall: 20px;
+  --height-24-minismall: 24px;
+  --height-28-small: 28px;
+  --height-32-medium: 32px;
+  --height-36-large: 36px;
+  --height-40-xlarge: 40px;
+  --height-44-superlarge: 44px;
+
+  /* ---------- 字号 (Font-size) ---------- */
+  --font-size-12: 12px;
+  --font-size-13: 13px;
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+  --font-size-18: 18px;
+  --font-size-20: 20px;
+  --font-size-24: 24px;
+  --font-size-28: 28px;
+  --font-size-36: 36px;
+  --font-size-44: 44px;
+  --font-size-56: 56px;
+
+  /* ---------- 字重 (Font-weight) ---------- */
+  --font-weight-300-light: 300;
+  --font-weight-400-regular: 400;
+  --font-weight-500-medium: 500;
+  --font-weight-600-semibold: 600;
+  --font-weight-700-bold: 700;
+}
+
+
+/* ============================================================
+   二、背景色工具类 (Background)
+   ============================================================ */
+
+/* 品牌色背景 */
+.bg-brand-primary-0 { background-color: var(--brand-primary-0); }
+.bg-brand-primary-1 { background-color: var(--brand-primary-1); }
+.bg-brand-primary-2 { background-color: var(--brand-primary-2); }
+.bg-brand-primary-3 { background-color: var(--brand-primary-3); }
+.bg-brand-primary-4 { background-color: var(--brand-primary-4); }
+.bg-brand-primary-5 { background-color: var(--brand-primary-5); }
+
+/* 填充色背景 */
+.bg-fill-1 { background-color: var(--fill-1); }
+.bg-fill-2 { background-color: var(--fill-2); }
+.bg-fill-3 { background-color: var(--fill-3); }
+.bg-fill-4 { background-color: var(--fill-4); }
+.bg-fill-5 { background-color: var(--fill-5); }
+
+/* 成功色背景 */
+.bg-success-0 { background-color: var(--success-0); }
+.bg-success-1 { background-color: var(--success-1); }
+.bg-success-2 { background-color: var(--success-2); }
+.bg-success-3 { background-color: var(--success-3); }
+.bg-success-4 { background-color: var(--success-4); }
+
+/* 警告色背景 */
+.bg-warning-0 { background-color: var(--warning-0); }
+.bg-warning-1 { background-color: var(--warning-1); }
+.bg-warning-2 { background-color: var(--warning-2); }
+.bg-warning-3 { background-color: var(--warning-3); }
+.bg-warning-4 { background-color: var(--warning-4); }
+
+/* 危险色背景 */
+.bg-red-0 { background-color: var(--red-0); }
+.bg-red-1 { background-color: var(--red-1); }
+.bg-red-2 { background-color: var(--red-2); }
+.bg-red-3 { background-color: var(--red-3); }
+.bg-red-4 { background-color: var(--red-4); }
+
+/* 中性色背景 */
+.bg-neutral-0 { background-color: var(--neutral-0); }
+.bg-neutral-1 { background-color: var(--neutral-1); }
+.bg-neutral-2 { background-color: var(--neutral-2); }
+.bg-neutral-3 { background-color: var(--neutral-3); }
+.bg-neutral-4 { background-color: var(--neutral-4); }
+.bg-neutral-5 { background-color: var(--neutral-5); }
+
+
+/* ============================================================
+   三、文字色工具类 (Text Color)
+   ============================================================ */
+
+/* 文字色（对应 Figma: gray/text） */
+.text-1 { color: var(--text-1); }
+.text-2 { color: var(--text-2); }
+.text-3 { color: var(--text-3); }
+.text-4 { color: var(--text-4); }
+
+/* 品牌色文字 */
+.text-brand-primary-0 { color: var(--brand-primary-0); }
+.text-brand-primary-1 { color: var(--brand-primary-1); }
+.text-brand-primary-2 { color: var(--brand-primary-2); }
+
+/* 语义色文字 */
+.text-success-0 { color: var(--success-0); }
+.text-success-1 { color: var(--success-1); }
+.text-warning-0 { color: var(--warning-0); }
+.text-warning-1 { color: var(--warning-1); }
+.text-red-0 { color: var(--red-0); }
+.text-red-1 { color: var(--red-1); }
+
+
+/* ============================================================
+   四、边框色工具类 (Border Color)
+   ============================================================ */
+
+/* 边框色（对应 Figma: gray/border） */
+.border-1 { border-color: var(--border-1); }
+.border-2 { border-color: var(--border-2); }
+.border-3 { border-color: var(--border-3); }
+.border-4 { border-color: var(--border-4); }
+
+/* 品牌色边框 */
+.border-brand-primary-0 { border-color: var(--brand-primary-0); }
+.border-brand-primary-1 { border-color: var(--brand-primary-1); }
+
+
+/* ============================================================
+   五、间距工具类 (Spacing)
+   ============================================================ */
+
+/* Padding - 全方向 */
+.p-0 { padding: var(--space-0); }
+.p-2 { padding: var(--space-2); }
+.p-4 { padding: var(--space-4); }
+.p-8 { padding: var(--space-8); }
+.p-12 { padding: var(--space-12); }
+.p-16 { padding: var(--space-16); }
+.p-24 { padding: var(--space-24); }
+.p-48 { padding: var(--space-48); }
+.p-80 { padding: var(--space-80); }
+.p-120 { padding: var(--space-120); }
+
+/* Padding - 水平方向 (px) */
+.px-0 { padding-left: var(--space-0); padding-right: var(--space-0); }
+.px-2 { padding-left: var(--space-2); padding-right: var(--space-2); }
+.px-4 { padding-left: var(--space-4); padding-right: var(--space-4); }
+.px-8 { padding-left: var(--space-8); padding-right: var(--space-8); }
+.px-12 { padding-left: var(--space-12); padding-right: var(--space-12); }
+.px-16 { padding-left: var(--space-16); padding-right: var(--space-16); }
+.px-24 { padding-left: var(--space-24); padding-right: var(--space-24); }
+
+/* Padding - 垂直方向 (py) */
+.py-0 { padding-top: var(--space-0); padding-bottom: var(--space-0); }
+.py-2 { padding-top: var(--space-2); padding-bottom: var(--space-2); }
+.py-4 { padding-top: var(--space-4); padding-bottom: var(--space-4); }
+.py-8 { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+.py-12 { padding-top: var(--space-12); padding-bottom: var(--space-12); }
+.py-16 { padding-top: var(--space-16); padding-bottom: var(--space-16); }
+.py-24 { padding-top: var(--space-24); padding-bottom: var(--space-24); }
+
+/* Padding - 单方向 */
+.pt-0 { padding-top: var(--space-0); }
+.pt-4 { padding-top: var(--space-4); }
+.pt-8 { padding-top: var(--space-8); }
+.pt-12 { padding-top: var(--space-12); }
+.pt-16 { padding-top: var(--space-16); }
+.pt-24 { padding-top: var(--space-24); }
+
+.pr-0 { padding-right: var(--space-0); }
+.pr-4 { padding-right: var(--space-4); }
+.pr-8 { padding-right: var(--space-8); }
+.pr-12 { padding-right: var(--space-12); }
+.pr-16 { padding-right: var(--space-16); }
+.pr-24 { padding-right: var(--space-24); }
+
+.pb-0 { padding-bottom: var(--space-0); }
+.pb-4 { padding-bottom: var(--space-4); }
+.pb-8 { padding-bottom: var(--space-8); }
+.pb-12 { padding-bottom: var(--space-12); }
+.pb-16 { padding-bottom: var(--space-16); }
+.pb-24 { padding-bottom: var(--space-24); }
+
+.pl-0 { padding-left: var(--space-0); }
+.pl-4 { padding-left: var(--space-4); }
+.pl-8 { padding-left: var(--space-8); }
+.pl-12 { padding-left: var(--space-12); }
+.pl-16 { padding-left: var(--space-16); }
+.pl-24 { padding-left: var(--space-24); }
+
+/* Margin - 全方向 */
+.m-0 { margin: var(--space-0); }
+.m-2 { margin: var(--space-2); }
+.m-4 { margin: var(--space-4); }
+.m-8 { margin: var(--space-8); }
+.m-12 { margin: var(--space-12); }
+.m-16 { margin: var(--space-16); }
+.m-24 { margin: var(--space-24); }
+
+/* Margin - 水平方向 */
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mx-0 { margin-left: var(--space-0); margin-right: var(--space-0); }
+.mx-4 { margin-left: var(--space-4); margin-right: var(--space-4); }
+.mx-8 { margin-left: var(--space-8); margin-right: var(--space-8); }
+.mx-12 { margin-left: var(--space-12); margin-right: var(--space-12); }
+.mx-16 { margin-left: var(--space-16); margin-right: var(--space-16); }
+.mx-24 { margin-left: var(--space-24); margin-right: var(--space-24); }
+
+/* Margin - 垂直方向 */
+.my-0 { margin-top: var(--space-0); margin-bottom: var(--space-0); }
+.my-4 { margin-top: var(--space-4); margin-bottom: var(--space-4); }
+.my-8 { margin-top: var(--space-8); margin-bottom: var(--space-8); }
+.my-12 { margin-top: var(--space-12); margin-bottom: var(--space-12); }
+.my-16 { margin-top: var(--space-16); margin-bottom: var(--space-16); }
+.my-24 { margin-top: var(--space-24); margin-bottom: var(--space-24); }
+
+/* Margin - 单方向 */
+.mt-0 { margin-top: var(--space-0); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-8 { margin-top: var(--space-8); }
+.mt-12 { margin-top: var(--space-12); }
+.mt-16 { margin-top: var(--space-16); }
+.mt-24 { margin-top: var(--space-24); }
+.mt-48 { margin-top: var(--space-48); }
+
+.mr-0 { margin-right: var(--space-0); }
+.mr-4 { margin-right: var(--space-4); }
+.mr-8 { margin-right: var(--space-8); }
+.mr-12 { margin-right: var(--space-12); }
+.mr-16 { margin-right: var(--space-16); }
+.mr-24 { margin-right: var(--space-24); }
+
+.mb-0 { margin-bottom: var(--space-0); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-8 { margin-bottom: var(--space-8); }
+.mb-12 { margin-bottom: var(--space-12); }
+.mb-16 { margin-bottom: var(--space-16); }
+.mb-24 { margin-bottom: var(--space-24); }
+.mb-48 { margin-bottom: var(--space-48); }
+
+.ml-0 { margin-left: var(--space-0); }
+.ml-4 { margin-left: var(--space-4); }
+.ml-8 { margin-left: var(--space-8); }
+.ml-12 { margin-left: var(--space-12); }
+.ml-16 { margin-left: var(--space-16); }
+.ml-24 { margin-left: var(--space-24); }
+.ml-auto { margin-left: auto; }
+
+/* Gap (Flexbox/Grid 间距) */
+.gap-0 { gap: var(--space-0); }
+.gap-2 { gap: var(--space-2); }
+.gap-4 { gap: var(--space-4); }
+.gap-8 { gap: var(--space-8); }
+.gap-12 { gap: var(--space-12); }
+.gap-16 { gap: var(--space-16); }
+.gap-24 { gap: var(--space-24); }
+.gap-48 { gap: var(--space-48); }
+
+
+/* ============================================================
+   六、圆角工具类 (Border Radius)
+   对应 Figma: Radius/Mode 1
+   ============================================================ */
+
+.radius-0-none { border-radius: var(--radius-0-none); }
+.radius-2-minismall { border-radius: var(--radius-2-minismall); }
+.radius-4-small { border-radius: var(--radius-4-small); }
+.radius-6-regular { border-radius: var(--radius-6-regular); }
+.radius-8-medium { border-radius: var(--radius-8-medium); }
+.radius-12-large { border-radius: var(--radius-12-large); }
+.radius-999-round { border-radius: var(--radius-999-round); }
+
+/* 简写别名（可选） */
+.rounded-none { border-radius: var(--radius-0-none); }
+.rounded-minismall { border-radius: var(--radius-2-minismall); }
+.rounded-small { border-radius: var(--radius-4-small); }
+.rounded-regular { border-radius: var(--radius-6-regular); }
+.rounded-medium { border-radius: var(--radius-8-medium); }
+.rounded-large { border-radius: var(--radius-12-large); }
+.rounded-round { border-radius: var(--radius-999-round); }
+
+
+/* ============================================================
+   七、组件高度工具类 (Height)
+   对应 Figma: height/Mode 1
+   ============================================================ */
+
+.h-20-supersmall { height: var(--height-20-supersmall); }
+.h-24-minismall { height: var(--height-24-minismall); }
+.h-28-small { height: var(--height-28-small); }
+.h-32-medium { height: var(--height-32-medium); }
+.h-36-large { height: var(--height-36-large); }
+.h-40-xlarge { height: var(--height-40-xlarge); }
+.h-44-superlarge { height: var(--height-44-superlarge); }
+
+/* 最小高度 */
+.min-h-20-supersmall { min-height: var(--height-20-supersmall); }
+.min-h-24-minismall { min-height: var(--height-24-minismall); }
+.min-h-28-small { min-height: var(--height-28-small); }
+.min-h-32-medium { min-height: var(--height-32-medium); }
+.min-h-36-large { min-height: var(--height-36-large); }
+.min-h-40-xlarge { min-height: var(--height-40-xlarge); }
+.min-h-44-superlarge { min-height: var(--height-44-superlarge); }
+
+
+/* ============================================================
+   八、字号工具类 (Font Size)
+   对应 Figma: Typography/PC/Font-size
+   ============================================================ */
+
+.font-size-12 { font-size: var(--font-size-12); }
+.font-size-13 { font-size: var(--font-size-13); }
+.font-size-14 { font-size: var(--font-size-14); }
+.font-size-16 { font-size: var(--font-size-16); }
+.font-size-18 { font-size: var(--font-size-18); }
+.font-size-20 { font-size: var(--font-size-20); }
+.font-size-24 { font-size: var(--font-size-24); }
+.font-size-28 { font-size: var(--font-size-28); }
+.font-size-36 { font-size: var(--font-size-36); }
+.font-size-44 { font-size: var(--font-size-44); }
+.font-size-56 { font-size: var(--font-size-56); }
+
+
+/* ============================================================
+   九、字重工具类 (Font Weight)
+   对应 Figma: Typography/PC/Font-weight
+   ============================================================ */
+
+.font-weight-300-light { font-weight: var(--font-weight-300-light); }
+.font-weight-400-regular { font-weight: var(--font-weight-400-regular); }
+.font-weight-500-medium { font-weight: var(--font-weight-500-medium); }
+.font-weight-600-semibold { font-weight: var(--font-weight-600-semibold); }
+.font-weight-700-bold { font-weight: var(--font-weight-700-bold); }
+
+/* 简写别名（可选） */
+.font-light { font-weight: var(--font-weight-300-light); }
+.font-regular { font-weight: var(--font-weight-400-regular); }
+.font-medium { font-weight: var(--font-weight-500-medium); }
+.font-semibold { font-weight: var(--font-weight-600-semibold); }
+.font-bold { font-weight: var(--font-weight-700-bold); }
+
+
+/* ============================================================
+   十、悬停状态 (Hover States)
+   ============================================================ */
+
+/* 背景色悬停 */
+.hover\:bg-brand-primary-0:hover { background-color: var(--brand-primary-0); }
+.hover\:bg-brand-primary-1:hover { background-color: var(--brand-primary-1); }
+.hover\:bg-fill-4:hover { background-color: var(--fill-4); }
+.hover\:bg-red-0:hover { background-color: var(--red-0); }
+
+/* 文字色悬停 */
+.hover\:text-brand-primary-0:hover { color: var(--brand-primary-0); }
+.hover\:text-brand-primary-1:hover { color: var(--brand-primary-1); }
+.hover\:text-1:hover { color: var(--text-1); }
+.hover\:text-2:hover { color: var(--text-2); }
+.hover\:text-red-1:hover { color: var(--red-1); }
+
+/* 边框色悬停 */
+.hover\:border-brand-primary-0:hover { border-color: var(--brand-primary-0); }
+
+
+/* ============================================================
+   十一、常用组合类（快捷方式）
+   ============================================================ */
+
+/* 主按钮 */
+.btn-primary {
+  height: var(--height-32-medium);
+  padding-left: var(--space-16);
+  padding-right: var(--space-16);
+  background-color: var(--brand-primary-1);
+  color: var(--fill-5);
+  border-radius: var(--radius-4-small);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-400-regular);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-primary:hover {
+  background-color: var(--brand-primary-0);
+}
+
+/* 次按钮 */
+.btn-secondary {
+  height: var(--height-32-medium);
+  padding-left: var(--space-16);
+  padding-right: var(--space-16);
+  background-color: var(--fill-5);
+  color: var(--text-2);
+  border: 1px solid var(--border-3);
+  border-radius: var(--radius-4-small);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-400-regular);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover {
+  border-color: var(--brand-primary-1);
+  color: var(--brand-primary-1);
+}
+
+/* 危险按钮 */
+.btn-danger {
+  height: var(--height-32-medium);
+  padding-left: var(--space-16);
+  padding-right: var(--space-16);
+  background-color: var(--red-1);
+  color: var(--fill-5);
+  border-radius: var(--radius-4-small);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-400-regular);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-danger:hover {
+  background-color: var(--red-0);
+}
+
+/* 卡片 */
+.card {
+  background-color: var(--fill-5);
+  border: 1px solid var(--border-3);
+  border-radius: var(--radius-4-small);
+  padding: var(--space-16);
+}
+
+/* 标签 - 系统通知 */
+.tag-system {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--height-20-supersmall);
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+  background-color: var(--brand-primary-5);
+  color: var(--brand-primary-1);
+  border-radius: var(--radius-2-minismall);
+  font-size: var(--font-size-12);
+}
+
+/* 标签 - 账户提醒 */
+.tag-account {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--height-20-supersmall);
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+  background-color: var(--warning-4);
+  color: var(--warning-0);
+  border-radius: var(--radius-2-minismall);
+  font-size: var(--font-size-12);
+}
+
+/* 标签 - 成功/产品动态 */
+.tag-success {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--height-20-supersmall);
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+  background-color: var(--success-4);
+  color: var(--success-0);
+  border-radius: var(--radius-2-minismall);
+  font-size: var(--font-size-12);
+}
+
+/* 标签 - 危险/活动消息 */
+.tag-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--height-20-supersmall);
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+  background-color: var(--red-4);
+  color: var(--red-0);
+  border-radius: var(--radius-2-minismall);
+  font-size: var(--font-size-12);
+}
+
+/* 标签 - 已读状态 */
+.tag-read {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--height-20-supersmall);
+  padding-left: var(--space-8);
+  padding-right: var(--space-8);
+  background-color: var(--fill-3);
+  color: var(--text-2);
+  border-radius: var(--radius-2-minismall);
+  font-size: var(--font-size-12);
+}

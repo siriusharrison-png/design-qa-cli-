@@ -1,0 +1,7 @@
+/* 用例 1.4：不在 tokens 里的颜色，不应该报错 */
+
+.random-element {
+  background-color: #ff00ff;   /* 洋红色，不在 tokens 里 */
+  color: #00ff00;              /* 绿色，不在 tokens 里 */
+  border-color: #ffff00;       /* 黄色，不在 tokens 里 */
+}

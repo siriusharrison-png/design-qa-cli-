@@ -1,0 +1,27 @@
+/* 示例样式 - 包含硬编码问题 */
+
+.card {
+  background: #ffffff;
+  border: 1px solid #ebecef;
+  padding: 15px;           /* 不在规范内 */
+  margin: 17px;            /* 不在规范内 */
+  border-radius: 8px;
+}
+
+.card-title {
+  color: #181818;          /* 应该用 var(--text-dark-1) */
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.card-content {
+  color: #616161;          /* 应该用 var(--text-dark-2) */
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.card-footer {
+  border-top: 1px solid #ebecef;
+  padding-top: 13px;       /* 不在规范内 */
+  margin-top: 16px;
+}
