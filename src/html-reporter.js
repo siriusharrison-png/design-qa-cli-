@@ -226,11 +226,40 @@ header .meta {
 }
 
 function getHeader(projectName, date) {
-  return '<header><!-- TODO --></header>';
+  const dateStr = date.toLocaleString('zh-CN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  return `<header>
+  <div class="container">
+    <h1>${projectName}</h1>
+    <p class="meta">检测时间：${dateStr}</p>
+  </div>
+</header>`;
 }
 
 function getSummaryCards(summary) {
-  return '<section><!-- TODO --></section>';
+  return `<section class="container summary-cards">
+  <div class="card color">
+    <div class="icon">🎨</div>
+    <div class="count">${summary.color}</div>
+    <div class="label">颜色问题</div>
+  </div>
+  <div class="card spacing">
+    <div class="icon">📏</div>
+    <div class="count">${summary.spacing}</div>
+    <div class="label">间距问题</div>
+  </div>
+  <div class="card font-size">
+    <div class="icon">🔤</div>
+    <div class="count">${summary.fontSize}</div>
+    <div class="label">字号问题</div>
+  </div>
+</section>`;
 }
 
 function getExportButtons() {
