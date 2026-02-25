@@ -1,7 +1,7 @@
 {
   "name": "design-qa",
-  "version": "0.1.0",
-  "description": "检测代码是否正确使用设计系统 tokens",
+  "version": "1.0.0",
+  "description": "Detect hardcoded styles in code and suggest design tokens | 检测代码中的硬编码样式，建议使用设计系统 tokens",
   "main": "index.js",
   "bin": {
     "design-qa": "./bin/cli.js"
@@ -9,8 +9,34 @@
   "scripts": {
     "test": "node bin/cli.js check ./test"
   },
-  "keywords": ["design-system", "lint", "tokens", "qa"],
-  "author": "转转",
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "lint",
+    "qa",
+    "css",
+    "style-lint",
+    "hardcoded",
+    "tokens",
+    "figma"
+  ],
+  "author": "siriusharrison-png",
   "license": "MIT",
-  "type": "module"
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siriusharrison-png/design-qa-cli.git"
+  },
+  "homepage": "https://github.com/siriusharrison-png/design-qa-cli#readme",
+  "bugs": {
+    "url": "https://github.com/siriusharrison-png/design-qa-cli/issues"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "design-tokens.css"
+  ]
 }

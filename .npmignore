@@ -1,0 +1,16 @@
+# Test files
+test/
+
+# Documentation
+docs/
+
+# Git
+.git/
+.gitignore
+
+# Development
+*.log
+.DS_Store
+
+# Design tokens JSON (only CSS is needed)
+design-tokens.json
