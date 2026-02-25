@@ -32,6 +32,7 @@ ${colors.yellow('选项:')}
   --tokens, -t <文件>   指定 tokens 文件路径 (默认: design-tokens.css)
   --output, -o <文件>   输出 HTML 报告 (如: report.html)
   --fix                 自动修复颜色和字号问题
+  --ci                  CI 模式：有问题时退出码为 1
   --help, -h            显示帮助信息
 
 ${colors.yellow('示例:')}
@@ -48,6 +49,7 @@ function parseArgs(args) {
     tokensFile: 'design-tokens.css',
     output: null,
     fix: false,
+    ci: false,
   };
 
   for (let i = 0; i < args.length; i++) {
@@ -62,6 +64,8 @@ function parseArgs(args) {
       result.output = args[++i];
     } else if (arg === '--fix') {
       result.fix = true;
+    } else if (arg === '--ci') {
+      result.ci = true;
     } else if (arg === '--help' || arg === '-h') {
       result.command = 'help';
     }
@@ -144,6 +148,11 @@ async function main() {
       });
       writeFileSync(args.output, html, 'utf-8');
       console.log(colors.green(`\n📄 HTML 报告已生成: ${args.output}`));
+    }
+
+    // 6. CI 模式：有问题时退出码为 1
+    if (args.ci && issues.length > 0) {
+      process.exit(1);
     }
   }
 }

@@ -92,6 +92,29 @@ Create a CSS file with your design tokens:
 - `.css` / `.scss`
 - `.vue` / `.svelte`
 
+### CI/CD Integration
+
+Use `--ci` flag to fail the build when issues are found:
+
+```bash
+# Exit with code 1 if issues exist
+design-qa check ./src --ci
+```
+
+**GitHub Actions example:**
+
+```yaml
+name: Design QA
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npx design-qa check ./src --ci
+```
+
 ---
 
 ## 中文
@@ -177,6 +200,29 @@ design-qa check ./src --tokens ./my-tokens.css
 - `.js` / `.jsx` / `.ts` / `.tsx`
 - `.css` / `.scss`
 - `.vue` / `.svelte`
+
+### CI/CD 集成
+
+使用 `--ci` 参数，在发现问题时让构建失败：
+
+```bash
+# 有问题时退出码为 1
+design-qa check ./src --ci
+```
+
+**GitHub Actions 示例：**
+
+```yaml
+name: Design QA
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npx design-qa check ./src --ci
+```
 
 ---
 

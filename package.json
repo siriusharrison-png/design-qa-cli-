@@ -1,6 +1,6 @@
 {
   "name": "design-qa",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Detect hardcoded styles in code and suggest design tokens | 检测代码中的硬编码样式，建议使用设计系统 tokens",
   "main": "index.js",
   "bin": {
