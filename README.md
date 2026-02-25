@@ -4,7 +4,7 @@ Detect hardcoded styles in code and suggest design tokens.
 
 检测代码中的硬编码样式，建议使用设计系统 tokens。
 
-[English](#english) | [中文](#中文)
+[English](#english) | [中文](#中文) | [详细中文指南（给非开发人员）](./docs/guide-zh.md)
 
 ---
 
